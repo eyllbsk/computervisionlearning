@@ -2,6 +2,8 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 from tensorflow.keras.datasets import mnist
 
+import numpy as np 
+
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 # x_train; eğitim görüntüleri , y_train; etiketler, x_test; modelin daha önce görmediği test görüntüsü, y_test; cevapları 
 # mnis.load_data() --> eğitim ve test veri setlerini ayrı döndürür
@@ -67,4 +69,9 @@ test_loss, test_accuracy = model.evaluate(x_test,y_test)
 
 print("Test Loss:", test_loss)
 print("Test Accuracy:", test_accuracy)
+ 
+prediction = model.predict(x_test[:1])
+print(prediction)
 
+
+# MNIST veri seti üzerinde basit bir CNN modeli kurdum, veriyi normalize edip CNN formatına getirdim, modeli eğittim, test verisinde değerlendirdim ve tek görüntü için tahmin aldım 
